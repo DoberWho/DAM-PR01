@@ -6,11 +6,11 @@ import java.sql.SQLException;
 public class DbSqlite {
 
 	public static void main(String[] args) {
-		String path = "C:/DAM2/AD/Practicas/Pr01/";
+		final String PATH = "./db/";
 		Connection conn = null;
         try {
             // db parameters
-            String url = "jdbc:sqlite:"+path+"miTienda.db";
+            String url = "jdbc:sqlite:"+PATH+"miTienda.db";
             // create a connection to the database
             conn = DriverManager.getConnection(url);
             
