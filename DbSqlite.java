@@ -6,9 +6,7 @@ import java.sql.SQLException;
 
 
 public class DbSqlite {
-	
-	final String PATH = "./db/";
-	final String DBNAME = "miTienda.db";
+	 
 	
 	private static DbSqlite instance;
 	private DbSqlite(){
@@ -24,11 +22,11 @@ public class DbSqlite {
 	private void checkDbFiles() {
 		boolean fileExist = false;
 		System.out.println("Comprobando Base de Datos");
-		File path = new File(PATH);
+		File path = new File(Config.PATH_DB);
 		if (!path.exists()) {
 			path.mkdirs();
 		}
-		File db = new File(path, DBNAME);
+		File db = new File(path, Config.DBNAME);
 		if (db.exists()) {
 			System.out.println("Base de Datos Ya Creada");
 			this.init();
@@ -56,7 +54,7 @@ public class DbSqlite {
 		Connection conn = null;
         try {
             // db parameters
-            String url = "jdbc:sqlite:"+PATH+DBNAME;
+            String url = "jdbc:sqlite:"+Config.PATH_DB+Config.DBNAME;
             // create a connection to the database
             conn = DriverManager.getConnection(url);
             
@@ -74,11 +72,6 @@ public class DbSqlite {
                 System.out.println(ex.getMessage());
             }
         }
-	}
-	
-	public static void main(String[] args) {
-		DbSqlite db = DbSqlite.getInstance();
-		 
-	}
+	} 
 
 }
