@@ -21,6 +21,10 @@ public class DbSqlite {
 	
 	private Connection conn = null;
 	
+	public Connection getConnection() {
+		return conn;
+	}
+	
 	private void checkDbFiles() {
 		boolean fileExist = false;
 		System.out.println("Comprobando Base de Datos");

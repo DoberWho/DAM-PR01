@@ -27,6 +27,10 @@ public class Backup {
 		format = "db-" + getFormatDay(cal.get(Calendar.DAY_OF_MONTH)) + ".db";
 		File destino = new File(dirBackup, format);
 		
+		if (destino.exists()) {
+			return;
+		}
+		
 		try {
 			Files.copy(origen.toPath(), destino.toPath());
 		} catch (IOException e) { 

@@ -1,4 +1,6 @@
-
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class Main {
 
@@ -11,7 +13,21 @@ public class Main {
 		DbSqlite db = DbSqlite.getInstance();
 		
 		// Arrancar
-
+		Connection con = db.getConnection();
+		 
+		
+		String insertar = "INSERT INTO 'categorias' ('nombre') VALUES ('Categoria 01');";
+		try {
+			Statement statemnt = con.createStatement();
+			statemnt.execute(insertar);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(e);
+		}
+		//statemnt.executeQuery(sql);
+		
+		//con.prepareStatement(sql)
+	 
 	}
 
 }
