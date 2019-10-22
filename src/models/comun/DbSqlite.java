@@ -1,12 +1,15 @@
+package src.models.comun;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException; 
+import java.sql.SQLException;
+
+import src.Config;
+ 
 
 
-public class DbSqlite {
-	 
+public class DbSqlite { 
 	
 	private static DbSqlite instance;
 	private DbSqlite(){

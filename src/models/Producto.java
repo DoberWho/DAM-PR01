@@ -1,14 +1,14 @@
-package models;
+package src.models;
 
 import java.util.Date;
 
-public class FacturaLinea {
+public class Producto {
 
 	private Integer id;
 	private Date created;
-	private Integer id_factura;
 	private String nombre;
 	private Integer precio; // 100 = 1,00
+	private Integer stock;
 	
 	public Integer getId() {
 		return id;
@@ -22,12 +22,6 @@ public class FacturaLinea {
 	public void setCreated(Date created) {
 		this.created = created;
 	}
-	public Integer getId_factura() {
-		return id_factura;
-	}
-	public void setId_factura(Integer id_factura) {
-		this.id_factura = id_factura;
-	}
 	public String getNombre() {
 		return nombre;
 	}
@@ -40,6 +34,13 @@ public class FacturaLinea {
 	public void setPrecio(Integer precio) {
 		this.precio = precio;
 	}
+	public Integer getStock() {
+		return stock;
+	}
+	public void setStock(Integer stock) {
+		this.stock = stock;
+	}
+	
 	
 	
 }
