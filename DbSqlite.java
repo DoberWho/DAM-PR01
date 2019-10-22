@@ -19,6 +19,8 @@ public class DbSqlite {
 		return instance;
 	}
 	
+	private Connection conn = null;
+	
 	private void checkDbFiles() {
 		boolean fileExist = false;
 		System.out.println("Comprobando Base de Datos");
@@ -49,9 +51,18 @@ public class DbSqlite {
 		
 	}
 	
-	public void init() {
+	public void close() {
+		try {
+            if (conn != null) {
+                conn.close();
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+	}
+	
+	private Connection init() { 
 		
-		Connection conn = null;
         try {
             // db parameters
             String url = "jdbc:sqlite:"+Config.PATH_DB+Config.DBNAME;
@@ -59,19 +70,12 @@ public class DbSqlite {
             conn = DriverManager.getConnection(url);
             
             System.out.println("Connection to SQLite has been established.");
-            
+             
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             this.checkDbFiles();
-        } finally {
-            try {
-                if (conn != null) {
-                    conn.close();
-                }
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-            }
-        }
+        }  
+        return conn;
 	} 
 
 }
