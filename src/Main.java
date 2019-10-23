@@ -18,8 +18,7 @@ public class Main {
 		// Arrancar
 		 
 		 
-		Categoria.saveDb(con, "Categoria 02");
-		 
+		Categoria.saveDb(con, "Categoria 02"); 
 		
 		//statemnt.executeQuery(sql);
 		
