@@ -2,7 +2,9 @@ package src.models;
 
 import java.util.Date;
 
-public class Clientes {
+import src.models.comun.DbObject;
+
+public class Clientes implements DbObject {
 
 	private Integer id;
 	private Date created;
@@ -53,9 +55,23 @@ public class Clientes {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	} 
+	
+	@Override
+	public String getTable() {
+		return "categorias";
 	}
-	
-	
-	
+	@Override
+	public String getCampos() {
+		String campos = "";
+		if (this.nombre != null || !this.nombre.trim().isEmpty()) {
+			campos = campos + "nombre";
+		}
+		return "nombre, dni, direccion, telefono, email";
+	}
+	@Override
+	public String getValues() {
+		return "'"+this.nombre+"','"+this.dni+"','"+this.direccion+"','"+this.telefono+"','"+this.email+"'";		
+	}
 	
 }
