@@ -59,19 +59,29 @@ public class Clientes extends DbObject {
 	
 	@Override
 	public String getTable() {
-		return "categorias";
+		return "clientes";
 	}
+	
 	@Override
 	public String getCampos() {
 		String campos = "";
-		if (this.nombre != null || !this.nombre.trim().isEmpty()) {
-			campos = campos + "nombre";
-		}
-		return "nombre, dni, direccion, telefono, email";
+		campos = getCorrectCampos(null, "nombre"   , this.nombre);
+		campos = getCorrectCampos(null, "dni"      , this.dni);
+		campos = getCorrectCampos(null, "direccion", this.direccion);
+		campos = getCorrectCampos(null, "telefono" , this.telefono);
+		campos = getCorrectCampos(null, "email"    , this.email); 
+		return campos;
 	}
+	
 	@Override
 	public String getValues() {
-		return "'"+this.nombre+"','"+this.dni+"','"+this.direccion+"','"+this.telefono+"','"+this.email+"'";		
+		String value = "";
+		value = getCorrectValues(null, this.nombre);
+		value = getCorrectValues(null, this.dni);
+		value = getCorrectValues(null, this.direccion);
+		value = getCorrectValues(null, this.telefono);
+		value = getCorrectValues(null, this.email); 
+		return value;	
 	}
 	
 }

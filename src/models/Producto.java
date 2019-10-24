@@ -2,7 +2,9 @@ package src.models;
 
 import java.util.Date;
 
-public class Producto {
+import src.models.comun.DbObject;
+
+public class Producto extends DbObject {
 
 	private Integer id;
 	private Date created;
@@ -41,6 +43,27 @@ public class Producto {
 		this.stock = stock;
 	}
 	
+	
+	@Override
+	public String getTable() {
+		return "producto";
+	}
+	@Override
+	public String getCampos() {
+		String campos = ""; 
+		campos = getCorrectCampos(null, "nombre", this.nombre);
+		campos = getCorrectCampos(null, "precio", this.precio);
+		campos = getCorrectCampos(null, "stock" , this.stock); 
+		return campos;
+	}
+	@Override
+	public String getValues() {
+		String value = ""; 
+		value = getCorrectValues(null, this.nombre);
+		value = getCorrectValues(null, this.precio); 
+		value = getCorrectValues(null, this.stock); 
+		return value;		
+	}
 	
 	
 }
