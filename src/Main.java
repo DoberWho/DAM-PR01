@@ -9,9 +9,7 @@ public class Main {
 		//Backup.getInstance().doBackup();  
 		
 		Clientes client = new Clientes();
-		client.setNombre("cliente 02");
-		client.setEmail("user02@user.com");
-		client.setDni("1234");
+		client.setNombre("cliente 022224");  
 		client.setTelefono("1234567");
 		  
 		client.save();

@@ -11,6 +11,8 @@ public class Producto extends DbObject {
 	private String nombre;
 	private Integer precio; // 100 = 1,00
 	private Integer stock;
+	private Integer id_categoria;
+	
 	
 	public Integer getId() {
 		return id;
@@ -42,6 +44,12 @@ public class Producto extends DbObject {
 	public void setStock(Integer stock) {
 		this.stock = stock;
 	}
+	public Integer getId_categoria() {
+		return id_categoria;
+	}
+	public void setId_categoria(Integer id_categoria) {
+		this.id_categoria = id_categoria;
+	}
 	
 	
 	@Override
@@ -53,8 +61,8 @@ public class Producto extends DbObject {
 		String campos = ""; 
 		campos = getCorrectCampos(campos, "nombre", this.nombre);
 		campos = getCorrectCampos(campos, "precio", this.precio);
-		campos = getCorrectCampos(campos, "stock" , this.stock); 
-		String dd = "nombre, precio, stock";
+		campos = getCorrectCampos(campos, "stock" , this.stock);
+		campos = getCorrectCampos(campos, "id_categoria" , this.id_categoria);  
 		return campos;
 	}
 	@Override
@@ -62,7 +70,8 @@ public class Producto extends DbObject {
 		String value = ""; 
 		value = getCorrectValues(value, this.nombre);
 		value = getCorrectValues(value, this.precio); 
-		value = getCorrectValues(value, this.stock); 
+		value = getCorrectValues(value, this.stock);
+		value = getCorrectValues(value, this.id_categoria); 
 		return value;		
 	}
 	
