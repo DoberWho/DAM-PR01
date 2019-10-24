@@ -1,6 +1,5 @@
 package src; 
-import src.models.Clientes;
-import src.models.comun.DbController; 
+import src.models.Clientes; 
 
 public class Main {
 
@@ -14,8 +13,8 @@ public class Main {
 		client.setEmail("user02@user.com");
 		client.setDni("1234");
 		client.setTelefono("1234567");
-		 
-		DbController.getInstance().saveDb(client);
+		  
+		client.save();
 		
 		//statemnt.executeQuery(sql);
 		

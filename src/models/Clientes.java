@@ -4,7 +4,7 @@ import java.util.Date;
 
 import src.models.comun.DbObject;
 
-public class Clientes implements DbObject {
+public class Clientes extends DbObject {
 
 	private Integer id;
 	private Date created;
