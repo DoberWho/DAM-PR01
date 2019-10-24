@@ -1,5 +1,7 @@
 package src.models.comun;
 
+import java.sql.Date;
+
 public abstract class DbObject {
 
 	public abstract String getTable();
@@ -10,12 +12,13 @@ public abstract class DbObject {
 		DbController.getInstance().saveDb(this);
 	}
 	
-	private boolean isNull(Object value) {
+	private boolean isNullOrEmpty(Object value) {
 		if (value == null) {
 			return true;
-		}
+		} 
+		
 		if (value instanceof String) {
-			if (((String)value).trim().isEmpty()) {
+			if (( (String)value ).trim().isEmpty() ) {
 				return true;
 			}
 		}
@@ -24,10 +27,10 @@ public abstract class DbObject {
 	}
 	
 	public String getCorrectCampos(String data, String campo, Object value) {
-		if (isNull(data)) {
+		if (isNullOrEmpty(data)) {
 			data = "";
 		}
-		if (isNull(value)) {
+		if (isNullOrEmpty(value)) {
 			return data;
 		}
 		
@@ -40,10 +43,10 @@ public abstract class DbObject {
 	
 	
 	public String getCorrectValues(String data, Object value) {
-		if (isNull(data)) {
+		if (isNullOrEmpty(data)) {
 			data = "";
 		}
-		if (isNull(value)) {
+		if (isNullOrEmpty(value)) {
 			return data;
 		}
 		

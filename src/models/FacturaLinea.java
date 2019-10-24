@@ -50,17 +50,17 @@ public class FacturaLinea extends DbObject {
 	@Override
 	public String getCampos() {
 		String campos = "";
-		campos = getCorrectCampos(null, "id_factura", this.id_factura);
-		campos = getCorrectCampos(null, "nombre"    , this.nombre);
-		campos = getCorrectCampos(null, "precio"    , this.precio); 
+		campos = getCorrectCampos(campos, "id_factura", this.id_factura);
+		campos = getCorrectCampos(campos, "nombre"    , this.nombre);
+		campos = getCorrectCampos(campos, "precio"    , this.precio); 
 		return campos;
 	}
 	@Override
 	public String getValues() {
 		String value = "";
-		value = getCorrectValues(null, this.id_factura);
-		value = getCorrectValues(null, this.nombre);
-		value = getCorrectValues(null, this.precio); 
+		value = getCorrectValues(value, this.id_factura);
+		value = getCorrectValues(value, this.nombre);
+		value = getCorrectValues(value, this.precio); 
 		return value;		
 	}
 	

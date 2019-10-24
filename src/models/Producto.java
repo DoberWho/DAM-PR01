@@ -51,17 +51,18 @@ public class Producto extends DbObject {
 	@Override
 	public String getCampos() {
 		String campos = ""; 
-		campos = getCorrectCampos(null, "nombre", this.nombre);
-		campos = getCorrectCampos(null, "precio", this.precio);
-		campos = getCorrectCampos(null, "stock" , this.stock); 
+		campos = getCorrectCampos(campos, "nombre", this.nombre);
+		campos = getCorrectCampos(campos, "precio", this.precio);
+		campos = getCorrectCampos(campos, "stock" , this.stock); 
+		String dd = "nombre, precio, stock";
 		return campos;
 	}
 	@Override
 	public String getValues() {
 		String value = ""; 
-		value = getCorrectValues(null, this.nombre);
-		value = getCorrectValues(null, this.precio); 
-		value = getCorrectValues(null, this.stock); 
+		value = getCorrectValues(value, this.nombre);
+		value = getCorrectValues(value, this.precio); 
+		value = getCorrectValues(value, this.stock); 
 		return value;		
 	}
 	

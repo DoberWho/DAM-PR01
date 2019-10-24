@@ -65,22 +65,22 @@ public class Clientes extends DbObject {
 	@Override
 	public String getCampos() {
 		String campos = "";
-		campos = getCorrectCampos(null, "nombre"   , this.nombre);
-		campos = getCorrectCampos(null, "dni"      , this.dni);
-		campos = getCorrectCampos(null, "direccion", this.direccion);
-		campos = getCorrectCampos(null, "telefono" , this.telefono);
-		campos = getCorrectCampos(null, "email"    , this.email); 
+		campos = getCorrectCampos(campos, "nombre"   , this.nombre);
+		campos = getCorrectCampos(campos, "dni"      , this.dni);
+		campos = getCorrectCampos(campos, "direccion", this.direccion);
+		campos = getCorrectCampos(campos, "telefono" , this.telefono);
+		campos = getCorrectCampos(campos, "email"    , this.email); 
 		return campos;
 	}
 	
 	@Override
 	public String getValues() {
 		String value = "";
-		value = getCorrectValues(null, this.nombre);
-		value = getCorrectValues(null, this.dni);
-		value = getCorrectValues(null, this.direccion);
-		value = getCorrectValues(null, this.telefono);
-		value = getCorrectValues(null, this.email); 
+		value = getCorrectValues(value, this.nombre);
+		value = getCorrectValues(value, this.dni);
+		value = getCorrectValues(value, this.direccion);
+		value = getCorrectValues(value, this.telefono);
+		value = getCorrectValues(value, this.email); 
 		return value;	
 	}
 	
