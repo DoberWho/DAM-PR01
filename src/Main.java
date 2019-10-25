@@ -1,5 +1,7 @@
 package src; 
-import src.models.Clientes; 
+import src.models.Categoria;
+import src.models.Clientes;
+import src.models.Producto; 
 
 public class Main {
 
@@ -8,11 +10,18 @@ public class Main {
 		// Hacer el Backup del día
 		//Backup.getInstance().doBackup();  
 		
-		Clientes client = new Clientes();
-		client.setNombre("cliente 022224");  
-		client.setTelefono("1234567");
-		  
-		client.save();
+		 Categoria cat = new Categoria();
+		 cat.setNombre("Cat 01");
+		 
+		 Producto prod = new Producto();
+		 prod.setId_categoria(1); // TODO: Select de la categoria insertada
+		 prod.setNombre("PROD 01");
+		 prod.setPrecio(100);
+		 prod.setStock(1);
+		 
+		 prod.save();
+		
+		
 		
 		//statemnt.executeQuery(sql);
 		

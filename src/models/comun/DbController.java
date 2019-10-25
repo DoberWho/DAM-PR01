@@ -24,6 +24,10 @@ public class DbController {
 		return instance;
 	}
 	
+	public Connection getConnection() {
+		return con;
+	}
+	
 	public boolean saveDb(DbObject obj) {  
 		
 		String TABLA = obj.getTable();
