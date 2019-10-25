@@ -7,6 +7,5 @@ public class Config {
 	public static final String PATH_BACKUP = PATH+"Backup/";
 	public static final String DBNAME      = "database.db"; 
  
-	
 	private Config() {};
 }
