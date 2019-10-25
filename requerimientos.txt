@@ -4,7 +4,7 @@
 	=> nombre
 	=> dni
 	=> direccion
-	=> telefono
+	=> phone
 	=> email
 - Cliente Contado - Ticket => ID_Ticket
 => Inventario
