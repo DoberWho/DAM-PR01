@@ -32,7 +32,10 @@ public class Main {
 		 prod.save();
 		 
 		 List<DbObject> productos = prod.list();
-		 
+		 for (DbObject dbObject : productos) {
+			Producto p = (Producto) dbObject;
+			p.delete();
+		} 
 		
 		
 		

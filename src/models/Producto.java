@@ -86,7 +86,6 @@ public class Producto extends DbObject {
 		item.setId_categoria( res.getInt("id_categoria") );
 				
 		return item;
-	}
-	
+	} 
 	
 }

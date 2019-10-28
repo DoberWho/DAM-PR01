@@ -19,6 +19,11 @@ public abstract class DbObject {
 		return DbController.getInstance().list(this);
 	}
 	
+	public void delete() { 
+		// TODO: ¿Como deberiamos hacerlo?
+	}
+	
+	
 	private boolean isNullOrEmpty(Object value) {
 		if (value == null) {
 			return true;
