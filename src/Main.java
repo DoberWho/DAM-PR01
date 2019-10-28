@@ -16,6 +16,12 @@ public class Main {
 		
 		 Categoria cat = new Categoria();
 		 cat.setNombre("Cat 01");
+		 //cat.save();
+		 List<DbObject> cats = cat.list();
+		 for (DbObject item : cats) {
+			Categoria dbCat = (Categoria)item;
+			System.out.println(dbCat.toString());
+		}
 		 
 		 Producto prod = new Producto();
 		 prod.setId_categoria(1); // TODO: Select de la categoria insertada
@@ -26,6 +32,7 @@ public class Main {
 		 prod.save();
 		 
 		 List<DbObject> productos = prod.list();
+		 
 		
 		
 		
