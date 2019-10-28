@@ -1,7 +1,11 @@
 package src; 
+import java.util.ArrayList;
+import java.util.List;
+
 import src.models.Categoria;
 import src.models.Clientes;
-import src.models.Producto; 
+import src.models.Producto;
+import src.models.comun.DbObject; 
 
 public class Main {
 
@@ -20,6 +24,8 @@ public class Main {
 		 prod.setStock(1);
 		 
 		 prod.save();
+		 
+		 List<DbObject> productos = prod.list();
 		
 		
 		

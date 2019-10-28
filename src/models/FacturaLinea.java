@@ -1,5 +1,7 @@
 package src.models;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 
 import src.models.comun.DbObject;
@@ -62,6 +64,18 @@ public class FacturaLinea extends DbObject {
 		value = getCorrectValues(value, this.nombre);
 		value = getCorrectValues(value, this.precio); 
 		return value;		
+	}
+	
+	@Override
+	public DbObject getDbObject(ResultSet res) throws SQLException {
+		FacturaLinea item = new FacturaLinea();
+		item.setId( res.getInt("id") ); 
+		item.setCreated( res.getDate("created") ); 
+		item.setId_factura(res.getInt("id_factura"));
+		item.setNombre(res.getString("nombre"));
+		item.setPrecio(res.getInt("precio")); 
+				
+		return item;
 	}
 	
 }

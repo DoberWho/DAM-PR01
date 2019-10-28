@@ -1,5 +1,7 @@
 package src.models;
  
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 
 import src.models.comun.DbObject;
@@ -41,5 +43,15 @@ public class Categoria extends DbObject {
 	public String getValues() {
 		return getCorrectValues(null, this.nombre);		
 	} 
+	
+	@Override
+	public DbObject getDbObject(ResultSet res) throws SQLException {
+		Categoria item = new Categoria();
+		item.setId( res.getInt("id") ); 
+		item.setCreated( res.getDate("created") );
+		item.setNombre( res.getString("nombre") );
+				
+		return item;
+	}
 	
 }

@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class DbController {
@@ -49,6 +51,33 @@ public class DbController {
 		}
 		System.out.println("Objeto "+TABLA+" - "+valor+" Insertada");
 		return true;
+	}
+
+	/**
+	 * 
+	 * @param obj Modelo de Datos para recoger la TABLA
+	 * @return Devuelve un Array de DbObject o <strong>NULL</strong> en caso de error
+	 */
+	public List<DbObject> list(DbObject obj) {
+		  
+		String sql = "SELECT * FROM "+obj.getTable(); 
+		ArrayList<DbObject> dev = new ArrayList<DbObject>();
+		
+		try {
+			Statement statemnt = this.con.createStatement(); 
+			ResultSet res = statemnt.executeQuery(sql);
+			
+			while(res.next()) { 
+				DbObject nObj = obj.getDbObject(res);
+				dev.add(nObj);
+			} 
+		} catch (SQLException e) { 
+			e.printStackTrace();
+			System.out.println(e);
+			return null;
+		} 
+		
+		return dev;
 	}
 
 }

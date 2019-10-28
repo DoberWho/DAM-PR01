@@ -1,15 +1,22 @@
 package src.models.comun;
 
-import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
 
 public abstract class DbObject {
 
 	public abstract String getTable();
 	public abstract String getCampos();
 	public abstract String getValues();
+	public abstract DbObject getDbObject(ResultSet res) throws SQLException;
 	
 	public void save() {
 		DbController.getInstance().saveDb(this);
+	}
+	
+	public List<DbObject> list() {
+		return DbController.getInstance().list(this);
 	}
 	
 	private boolean isNullOrEmpty(Object value) {
@@ -55,5 +62,6 @@ public abstract class DbObject {
 		} 
 		
 		return data+",'"+value+"'";
-	}
+	} 
+	
 }

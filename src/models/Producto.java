@@ -1,5 +1,7 @@
 package src.models;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 
 import src.models.comun.DbObject;
@@ -73,6 +75,17 @@ public class Producto extends DbObject {
 		value = getCorrectValues(value, this.stock);
 		value = getCorrectValues(value, this.id_categoria); 
 		return value;		
+	}
+	
+	@Override
+	public DbObject getDbObject(ResultSet res) throws SQLException {
+		Producto item = new Producto();
+		item.setNombre( res.getString("nombre") );
+		item.setPrecio( res.getInt("precio") );
+		item.setStock( res.getInt("stock") );
+		item.setId_categoria( res.getInt("id_categoria") );
+				
+		return item;
 	}
 	
 	
