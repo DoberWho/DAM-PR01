@@ -25,6 +25,10 @@ public abstract class DbObject {
 		DbController.getInstance().deleteDb(this);
 	}
 	
+	public DbObject getByid(Integer id) {
+		return DbController.getInstance().getByid(this, id);
+	}
+	
 	
 	private boolean isNullOrEmpty(Object value) {
 		if (value == null) {

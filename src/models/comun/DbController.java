@@ -45,6 +45,16 @@ public class DbController {
 		return true;
 	}
 	
+	/**
+	 * <strong>EJERCICIO</strong>
+	 * 
+	 * @param sql
+	 * @return - Debe devolver un array de DbObject o array vacio
+	 */
+	private List<DbObject> doExectueQuery(String sql){
+		return null;
+	}
+	
 	private boolean doSave(DbObject obj) {
 		String TABLA = obj.getTable();
 		String campos = obj.getCampos();
@@ -148,6 +158,19 @@ public class DbController {
 		} 
 		
 		return dev;
+	}
+
+	/**
+	 * <strong>EJERCICIO</strong>
+	 *  Dado un ID de un modelo; devuelve el elemento de la base de datos.
+	 *  
+	 * @param dbObject - una clase que extienda de DbObject
+	 * @param id - ID que tenemos que buscar en la tabla del objeto
+	 * @return - En caso de encontrar el registro; debe devolver un objeto de ese tipo. <br/> En caso de no encontrarlo; debe devovler un NULL. <br/> En caso de Exception; devolver null.
+	 */
+	public DbObject getByid(DbObject dbObject, Integer id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
