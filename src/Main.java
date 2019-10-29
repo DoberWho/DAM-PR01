@@ -42,6 +42,7 @@ public class Main {
 		 Clientes cli = new Clientes();
 		 cli.setNombre("Cliente");
 		 cli.setDni("11222334455");
+		 cli.save();
 		 
 		 
 		
