@@ -12,6 +12,7 @@ public class Categoria extends DbObject {
 	private Date created;
 	private String nombre;
 	
+	@Override
 	public Integer getId() {
 		return id;
 	}

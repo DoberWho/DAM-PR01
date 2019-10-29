@@ -53,6 +53,27 @@ public class DbController {
 		return true;
 	}
 
+	public boolean deleteDb(DbObject obj) {  
+		
+		String TABLA = obj.getTable(); 
+		
+		String sql = "DELETE FROM "+TABLA+" where id = "+obj.getId();
+		System.out.println(sql);
+		
+		try {
+			
+			Statement statemnt = this.con.createStatement(); 
+			statemnt.execute(sql);
+		 
+		} catch (SQLException e) { 
+			e.printStackTrace();
+			System.out.println(e);
+			return false;
+		}
+		System.out.println("Objeto "+TABLA+" - Borrado");
+		return true;
+	}
+	
 	/**
 	 * 
 	 * @param obj Modelo de Datos para recoger la TABLA

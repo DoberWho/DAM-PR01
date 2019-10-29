@@ -16,6 +16,7 @@ public class Clientes extends DbObject {
 	private String telefono;
 	private String email;
 	
+	@Override
 	public Integer getId() {
 		return id;
 	}

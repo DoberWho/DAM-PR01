@@ -6,6 +6,8 @@ import java.util.List;
 
 public abstract class DbObject {
 
+	
+	public abstract Integer getId();
 	public abstract String getTable();
 	public abstract String getCampos();
 	public abstract String getValues();
@@ -20,7 +22,7 @@ public abstract class DbObject {
 	}
 	
 	public void delete() { 
-		// TODO: ¿Como deberiamos hacerlo?
+		DbController.getInstance().deleteDb(this);
 	}
 	
 	
