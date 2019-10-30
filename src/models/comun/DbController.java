@@ -172,9 +172,14 @@ public class DbController {
 	 */
 	public DbObject getByid(DbObject obj, Integer id) {
 
-
+		String sql = "SELECT * FROM "+obj.getTable()+" WHERE id="+id; 
+		List<DbObject> dev = this.doExecuteQuery(sql, obj);
 		
-		return null;
+		if (dev == null || dev.isEmpty()) {
+			return null;
+		}
+		
+		return dev.get(0);
 	}
 
 }
