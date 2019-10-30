@@ -5,7 +5,8 @@ import java.util.List;
 import src.models.Categoria;
 import src.models.Clientes;
 import src.models.Producto;
-import src.models.comun.DbObject; 
+import src.models.comun.DbObject;
+import src.models.comun.Tools; 
 
 public class Main {
 
@@ -41,7 +42,7 @@ public class Main {
 		 
 		 Clientes cli = new Clientes();
 		 cli.setNombre("Cliente");
-		 cli.setDni("11222334455");
+		 cli.setDni(""+Tools.getInstance().getRandomNumber());
 		 cli.save();
 		 
 		 
