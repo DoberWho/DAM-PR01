@@ -66,6 +66,11 @@ public class Clientes extends DbObject {
 	}
 	
 	@Override
+	public String toString() {
+		return this.getValues();
+	}
+	
+	@Override
 	public String getCampos() {
 		String campos = "";
 		campos = getCorrectCampos(campos, "nombre"   , this.nombre);

@@ -78,5 +78,10 @@ public class Factura extends DbObject{
 		return item;
 	}
 	
+	@Override
+	public String toString() {
+		return this.getValues();
+	}
+	
 	
 }

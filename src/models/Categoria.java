@@ -34,7 +34,7 @@ public class Categoria extends DbObject {
 	
 	@Override
 	public String toString() {
-		return ""+this.id+":: "+this.nombre+" - "+this.created;
+		return this.getValues();
 	}
 	
 	@Override
