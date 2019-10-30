@@ -51,8 +51,24 @@ public class DbController {
 	 * @param sql
 	 * @return - Debe devolver un array de DbObject o array vacio
 	 */
-	private List<DbObject> doExectueQuery(String sql){
-		return null;
+	private List<DbObject> doExecuteQuery(String sql, DbObject obj ){
+		ArrayList<DbObject> dev = new ArrayList<DbObject>();
+		
+		try {
+			Statement statemnt = this.con.createStatement(); 
+			ResultSet res = statemnt.executeQuery(sql);
+			
+			while(res.next()) { 
+				DbObject nObj = obj.getDbObject(res);
+				dev.add(nObj);
+			} 
+		} catch (SQLException e) { 
+			e.printStackTrace();
+			System.out.println(e);
+			return null;
+		} 
+		
+		return dev;
 	}
 	
 	private boolean doSave(DbObject obj) {
@@ -141,24 +157,10 @@ public class DbController {
 	public List<DbObject> list(DbObject obj) {
 		  
 		String sql = "SELECT * FROM "+obj.getTable(); 
-		ArrayList<DbObject> dev = new ArrayList<DbObject>();
-		
-		try {
-			Statement statemnt = this.con.createStatement(); 
-			ResultSet res = statemnt.executeQuery(sql);
-			
-			while(res.next()) { 
-				DbObject nObj = obj.getDbObject(res);
-				dev.add(nObj);
-			} 
-		} catch (SQLException e) { 
-			e.printStackTrace();
-			System.out.println(e);
-			return null;
-		} 
+		List<DbObject> dev = this.doExecuteQuery(sql, obj);
 		
 		return dev;
-	}
+	} 
 
 	/**
 	 * <strong>EJERCICIO</strong>
@@ -168,8 +170,10 @@ public class DbController {
 	 * @param id - ID que tenemos que buscar en la tabla del objeto
 	 * @return - En caso de encontrar el registro; debe devolver un objeto de ese tipo. <br/> En caso de no encontrarlo; debe devovler un NULL. <br/> En caso de Exception; devolver null.
 	 */
-	public DbObject getByid(DbObject dbObject, Integer id) {
-		// TODO Auto-generated method stub
+	public DbObject getByid(DbObject obj, Integer id) {
+
+
+		
 		return null;
 	}
 
