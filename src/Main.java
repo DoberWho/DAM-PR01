@@ -45,7 +45,8 @@ public class Main {
 		 cli.save();
 		 
 		 
-		
+		 Clientes cli01 = (Clientes)new Clientes().getByid(1);
+		 System.out.println(cli01);
 		
 		
 		//statemnt.executeQuery(sql);

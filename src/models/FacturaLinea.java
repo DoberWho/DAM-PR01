@@ -70,7 +70,9 @@ public class FacturaLinea extends DbObject {
 	public DbObject getDbObject(ResultSet res) throws SQLException {
 		FacturaLinea item = new FacturaLinea();
 		item.setId( res.getInt("id") ); 
-		item.setCreated( res.getDate("created") ); 
+		int created = res.getInt("created");
+		Date date = new Date(created);		
+		item.setCreated( date ); 
 		item.setId_factura(res.getInt("id_factura"));
 		item.setNombre(res.getString("nombre"));
 		item.setPrecio(res.getInt("precio")); 

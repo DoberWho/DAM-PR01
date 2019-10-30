@@ -96,7 +96,9 @@ public class Clientes extends DbObject {
 	public DbObject getDbObject(ResultSet res) throws SQLException {
 		Clientes item = new Clientes();
 		item.setId( res.getInt("id") ); 
-		item.setCreated( res.getDate("created") );
+		int created = res.getInt("created");
+		Date date = new Date(created);		
+		item.setCreated( date );
 		item.setNombre( res.getString("nombre") );
 		item.setDni( res.getString("dni") );
 		item.setDireccion( res.getString("direccion") );
