@@ -6,7 +6,7 @@ import java.util.Date;
 
 import src.models.comun.DbObject;
 
-public class Categoria extends DbObject {
+public class Categoria extends DbObject { 
 
 	private Integer id;
 	private Date created;
