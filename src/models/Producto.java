@@ -80,6 +80,7 @@ public class Producto extends DbObject {
 	@Override
 	public DbObject getDbObject(ResultSet res) throws SQLException {
 		Producto item = new Producto();
+		item.setId( res.getInt("id") ); 
 		
 		int created = res.getInt("created");
 		Date date = new Date(created);		
