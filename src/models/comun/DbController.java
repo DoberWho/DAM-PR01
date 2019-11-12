@@ -104,9 +104,12 @@ public class DbController {
 			
 			modificaciones = modificaciones + campo+"="+valor;
 			//Posible solucion a evitar que tenga coma en el ultimo elemento.
-			if (i < arCampos.length) {
+			if (i <= arCampos.length) {
 				modificaciones = modificaciones+",";
 			}
+		}
+		if (modificaciones.charAt(modificaciones.length()-1) == ',') {
+			modificaciones = modificaciones.substring(0, modificaciones.length()-1);
 		}
 		// Otra posible solución a tener coma al final del elemento
 		//modificaciones = modificaciones.substring(0, modificaciones.length()-1);  
