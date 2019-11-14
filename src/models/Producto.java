@@ -64,7 +64,7 @@ public class Producto extends DbObject {
 		campos = getCorrectCampos(campos, "nombre", this.nombre);
 		campos = getCorrectCampos(campos, "precio", this.precio);
 		campos = getCorrectCampos(campos, "stock" , this.stock);
-		campos = getCorrectCampos(campos, "id_categoria" , this.id_categoria);  
+		campos = getCorrectCampos(campos, "id_categoria" , this.id_categoria);   
 		return campos;
 	}
 	@Override
@@ -73,7 +73,7 @@ public class Producto extends DbObject {
 		value = getCorrectValues(value, this.nombre);
 		value = getCorrectValues(value, this.precio); 
 		value = getCorrectValues(value, this.stock);
-		value = getCorrectValues(value, this.id_categoria); 
+		value = getCorrectValues(value, this.id_categoria);  
 		return value;		
 	}
 	
@@ -97,6 +97,12 @@ public class Producto extends DbObject {
 	@Override
 	public String toString() {
 		return this.getValues();
+	}
+	
+	
+	@Override
+	public boolean isNew() {
+		return (this.id == null);
 	}
 	
 }

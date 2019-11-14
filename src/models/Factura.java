@@ -46,6 +46,11 @@ public class Factura extends DbObject{
 	}
 	
 	@Override
+	public boolean isNew() {
+		return (this.id == null);
+	}
+	
+	@Override
 	public String getTable() {
 		return "facturas";
 	}

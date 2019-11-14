@@ -30,11 +30,18 @@ public class DbController {
 		return con;
 	}
 	
+	/**
+	 * Ejecuta la consulta SQL que se pasa por parametro
+	 * 
+	 * @param sql - Tiene que ser una consulta SQL valida y correcta
+	 * @return Devuelve si fue bien o mal la ejecución de la consulta. Puede devolver false; si la consulta no está bien formulada
+	 */
 	private boolean doExecute(String sql) {
 		try {
 			
 			Statement statemnt = this.con.createStatement(); 
 			statemnt.execute(sql);
+			statemnt.close();
 		 
 		} catch (SQLException e) { 
 			e.printStackTrace();
@@ -62,6 +69,7 @@ public class DbController {
 				DbObject nObj = obj.getDbObject(res);
 				dev.add(nObj);
 			} 
+			statemnt.close();
 		} catch (SQLException e) { 
 			e.printStackTrace();
 			System.out.println(e);
@@ -71,6 +79,12 @@ public class DbController {
 		return dev;
 	}
 	
+	/**
+	 * Guarda un objeto nuevo en la base de datos
+	 * <strong>NOTA: No comprueba si el objecto existe o tiene campos duplicados</strong>
+	 * @param obj - Tiene que ser un objecto valido; con los datos correctos de las funciones: getTable, getCampos, getValues
+	 * @return Devuelve si fue bien o mal el salvado del objecto. Puede devolver false; si la consulta no está bien formulada
+	 */
 	private boolean doSave(DbObject obj) {
 		String TABLA = obj.getTable();
 		String campos = obj.getCampos();
@@ -89,6 +103,14 @@ public class DbController {
 	}
 	
 	private boolean doUpdate(DbObject obj) {
+		/*
+		 * Modificaciones es el cuerpo de la consulta del update.
+		 * Se construye con el string campos y el values de cada objecto; 
+		 * tenemos que presuponer que ambos campos son iguales y tienen el
+		 * mismo tamaño. Siendo esto así; podemos hacer un split por el campo
+		 * de separación ','; y recoger la posición del array para concatenarlo y 
+		 * poner un igual en medio 
+		 */
 		
 		String TABLA = obj.getTable();
 		String campos = obj.getCampos();
@@ -102,12 +124,16 @@ public class DbController {
 			String campo = arCampos[i];
 			String valor = arValores[i];
 			
+			// Nos genera un string equivalente a: 'campo'=valor 
+			// y lo concatena a modificaciones
 			modificaciones = modificaciones + campo+"="+valor;
 			//Posible solucion a evitar que tenga coma en el ultimo elemento.
 			if (i <= arCampos.length) {
 				modificaciones = modificaciones+",";
 			}
 		}
+		// Comprobamos que el ultimo caracter es una , y la eliminamos. 
+		// Para evitar problemas con la consulta.
 		if (modificaciones.charAt(modificaciones.length()-1) == ',') {
 			modificaciones = modificaciones.substring(0, modificaciones.length()-1);
 		}
@@ -126,9 +152,15 @@ public class DbController {
 		return check;
 	}
 	
+	/**
+	 * Guarda en la base de datos el objecto DBOject que le pasemos;
+	 * <strong>NOTA: Tambien actualiza un objecto, diferencia el objecto nuevo de uno de la base de datos por el campo id==null; o la función isNew()</strong>
+	 * @param obj - Tiene que ser un objecto valido; con los datos correctos de las funciones: getTable, getCampos, getValues
+	 * @return Devuelve si fue bien o mal el salvado del objecto. Puede devolver false; si la consulta no está bien formulada
+	 */
 	public boolean saveDb(DbObject obj) {  
 		
-		if (obj.getId() == null) {
+		if (obj.isNew()) {
 			return this.doSave(obj);
 		}
 		 
