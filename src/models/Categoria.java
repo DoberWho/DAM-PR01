@@ -43,7 +43,7 @@ public class Categoria extends DbObject {
 	}
 	@Override
 	public String getCampos() {  
-		return getCorrectCampos(null, "nombre", this.nombre);
+		return getCorrectCampos(null, "name", this.nombre);
 	}
 	@Override
 	public String getValues() {
@@ -58,7 +58,7 @@ public class Categoria extends DbObject {
 		int created = res.getInt("created");
 		Date date = new Date(created);		
 		item.setCreated( date );
-		item.setNombre( res.getString("nombre") ); 
+		item.setNombre( res.getString("name") ); 
 		
 		return item;
 	}

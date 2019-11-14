@@ -58,7 +58,7 @@ public class Main {
 			Producto p = (Producto) dbObject;
 			//p.delete();
 			p.setPrecio(100);
-			p.save(); 
+			//p.save(); 
 		} 
 		 
 		 Clientes cli = new Clientes();
